@@ -1,0 +1,71 @@
+﻿@model IEnumerable<PROJECT.Core.Models.ViewModels.StudentViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a style="width:130px" class="btn btn-success " href="@Url.Action("Create", "Student")">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+
+        Create New
+    </a>
+    <a style="width:130px" class="btn btn-info " href="@Url.Action("CreatePdf", "Student")">
+        <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+
+         PDF Report
+    </a>
+    <a style="width:130px" class="btn btn-success " href="@Url.Action("GraphReport", "Student")">
+        <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+
+        Age Static
+    </a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+       
+        <td>
+            <a style="width:90px" class="btn btn-info " href="@Url.Action("Edit", "FAQ", new { id = item.Id})">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+
+                Edit
+            </a>
+            <a style="width:90px" class="btn btn-info " href="@Url.Action("Details", "FAQ", new { id = item.Id})">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+
+                Details
+            </a>
+
+            <a style="width:90px" class="btn btn-danger " href="@Url.Action("Delete", "FAQ", new { id = item.Id })">
+
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                Delete
+            </a>
+        </td>
+    </tr>
+}
+
+</table>
+
+
+@Html.PagedListPager((IPagedList)ViewBag.OnePageOfStudent, page => Url.Action("Index",new { page = page,cid=7 }))

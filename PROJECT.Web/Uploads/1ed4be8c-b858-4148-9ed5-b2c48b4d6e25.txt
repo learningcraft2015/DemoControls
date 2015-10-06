@@ -1,0 +1,62 @@
+Prevent and remove autorun virus from USB drive, hard disk
+
+Autorun virus, as the name suggests it uses the Autorun.inf feature in the Windows Os that is used for launching the programs that are stored in the removable media such as DVDs, USB Devices, CD ROMs, as well as Memory Sticks.
+
+If there is autorun.inf virus in USB drive, each time you insert the removable media and double-click your drives to open it, virus files begin executing and infect your computer: which spreads itself onto the computer by making the multiple copies of the autorun.inf and .exe files on every drive of your computer.
+
+When your computer is infected, viruses might clandestinely connect to the malicious web site and install the key logger on your PC. the key logger steal all your private information like usernames, account numbers, social security, passwords, credit card information, as well as other sensitive information. It is thus very important for you to remove the Autorun virus from computer
+
+Below is a guide to delete the autorun.inf virus manually, Manual removal of the Autorun.inf virus is suggested just to computer experts as removing and editing the windows registry may cause you severe damage to the system.
+
+Removal instructions
+
+Remove autorun.inf virus on USB drive
+
+plug the USB drive into your computer, a window dialogue may appear, don’t click on Ok , just choose ‘Cancel’.
+Go to command prompt and type your USB drive letter.
+Type dir /w/a and press enter, this will display a list of the files in in your flash drive. Remove the files: Ravmon.exe, ntdelect.com, New Folder.exe, kavo.exe  svchost.exe, autorun.inf  If you find them.
+To delete the virus just type del and the filename example. F:\del autorun.inf and hit enter.
+Run a antivirus scan on your USB drives just to make sure that all threats are removed successfully
+Delete autorun.inf on hard drive of computer
+
+Boot your system in the safe mode and then open a command prompt.
+Delete the following files: 
+%System%\config\csrss.exe
+%WinDir%\media\arona.exe
+%System%\logon.bat
+%System%\config\autorun.inf
+C:\autorun.inf
+D:\autorun.inf
+E:\ autorun.inf
+F:\autorun.inf
+autorun.inf files in all drives.
+Open the registry editor and delete following parameters:
+[HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System]
+DisableTaskMgr = 1
+[HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer]
+NoFolderOptions = 1
+[HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce]
+"Worms" = "%System%\logon.bat"
+Reboot your computer
+
+See more information about Win32.AutoRun.
+The method for removing autorun virus above is useful for some types of simple autorun viruses. If the autorun.inf come back again after removal and reinstall itself onto flash drive or local drive, even the antivirus could not detect it, that means the you have infected a new variant virus, which is unable to be removed manually.
+
+In this case, you need to use the effective autorun removal tool.
+
+
+Using Autorun Removal Tool
+
+Autorun Virus Remover is not a common product like other antivirus products in the market, it focus on solving the autorun virus problem completely.
+
+Remove 2000+ types of autorun viruses permanently, easily and quickly
+Prevent any viruses from infecting PC via USB drive
+Recover hidden files and folders on root of hard disk and USB drive
+Fix system, registry errors caused by viruses
+For 6 year experience on analyze and solve autorun.inf virus problem, We develop advanced antivirus engineer which can detect and remove autorun virus effectively that may be ignored by other antivirus product.  Virus samples from users all over the world are collected and analyzed to improve our product constantly, to make sure that it can detect and get rid of  all kind of autorun viruses .
+
+Also, Autorun Remover prevent any attack from USB port, before opening the external USB device, the autorun antivirus would execute an indepth scan of files on USB automatically to keep it safe.
+
+Our product can not only remove the virus, but also fix system errors caused by viruses at the same time, we provide full threat removal and repair solutions for our clients.
+
+With our product, you can solve the autorun.inf virus problem in 3 minutes.

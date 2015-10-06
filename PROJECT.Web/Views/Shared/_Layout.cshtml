@@ -1,0 +1,107 @@
+﻿@using MvcFlashMessages
+@using PROJECT.Core.Helpers
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Demo Controls <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("DATABASE DropDown", "Create", "DBDrop")</li>
+                            <li>@Html.ActionLink("Enum DropDown", "Create", "EnumDrop")</li>
+                            <li>@Html.ActionLink("OptionGroup DropDown", "Create", "OptGroup")</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("File Upload", "Create", "FileUpload")</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Create Pdf", "CreatePdf", "Pdf")</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Create DatePicker", "Create", "DatePicker")</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Create Graph", "Create", "Graph")</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Mail", "Create", "Graph")</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Validation Graph", "Create", "Regisrtation")</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Report on Student Date comparison", "StudentSearchReport", "DateReport")</li>
+
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Search WithOut Paging", "SearchWithOutPaging", "StudentSearch")</li>
+                            <li role="separator" class="divider"></li>
+                            <li>@Html.ActionLink("Report WithOut Paging", "ReportWithOutPaging", "StudentReport")</li>
+
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home1", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Student1", "Index", "Student")</li>
+                    @Html.Partial("_LoginPartial")
+                </ul>
+                
+               
+               
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div>
+            @Html.Raw(Html.BuildBreadcrumbNavigation())
+        </div>
+        @Html.RenderFlash()
+        <div class="body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        $(function () {
+            $('input.datetimepicker').datetimepicker();
+
+            $('form,input,select,textarea').attr("autocomplete", "off");
+
+            $('input.datepicker').datetimepicker(
+
+              { format: 'MM-DD-YYYY' }
+              );
+
+            $('input.timepicker').datetimepicker(
+
+               { format: 'LT' }
+               );
+
+
+        });
+
+    </script>
+</body>
+</html>

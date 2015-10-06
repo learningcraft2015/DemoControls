@@ -1,0 +1,110 @@
+﻿@using PROJECT.Core.Models.ViewModels
+@using PROJECT.Core.Helpers
+
+
+
+@if (HttpContext.Current.User.Identity.IsAuthenticated && HttpContext.Current.User.Identity.AuthenticationType == "Forms")
+{
+
+    if (SessionWrapper.UserAccount != null)
+    {
+        //------------  user-------------
+
+        if (SessionWrapper.UserAccount.UserTypeID == UserTypes.User.GetHashCode())
+        {
+           <a href="@Url.Action("Dashboard","User")"><span class="fa fa-home"></span>&nbsp; Home</a>
+
+            <span class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"></span> @SessionWrapper.UserAccount.UserEmail <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+
+
+                    <li><a href="@Url.Action("ChangePassword", "User")">Change Password</a></li>
+                    @*<li><a href="@Url.Action("Index","RewardPointResource")">Resources</a></li>
+                    <li><a href="@Url.Action("MyRewardPoint", "ResourceUsageTracking")">My Reward Point</a></li>*@
+                    <li>
+                        @Html.ActionLink("Hello " + @SessionWrapper.UserAccount.UserEmail + "!", "Dashboard", "User", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    </li>
+                    <li><a href="@Url.Action("Logout", "User")">Sign Out</a></li>
+
+                </ul>
+            </span>
+        }
+
+                    //---------------admin---------
+
+        else if (SessionWrapper.UserAccount.UserTypeID == UserTypes.Admin.GetHashCode())
+        {
+
+            <a href="@Url.Action("Dashboard","Admin")"><span class="fa fa-home"></span>&nbsp; Home</a>
+
+            <span class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="fa fa-cog fa-spin"></span>  
+                </a>
+                @*<ul class="dropdown-menu">
+
+
+                    <li><a href="@Url.Action("CROCreate", "Registration")">CRO Register</a></li>
+                    <li><a href="@Url.Action("Index", "FAQ")"><span class="fa fa-question"></span>&nbsp; FAQ</a></li>
+                    <li><a href="@Url.Action("Index", "FeedBack")">FeedBack</a></li>
+                    <li><a href="@Url.Action("Index", "SiteResources")">SiteResources</a></li>
+                    <li><a href="@Url.Action("Index", "RewardPointScheme")">RewardPointScheme</a></li>
+                    <li><a href="@Url.Action("Index", "SiteResourceCategories")">SiteResourceCategories</a></li>
+                </ul>*@
+            </span>
+
+
+            <span class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"></span> @SessionWrapper.UserAccount.UserEmail <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+
+
+
+                    <li><a href="@Url.Action("ChangePassword", "Admin")">Change Password</a></li>
+                    <li>
+                        @Html.ActionLink("Hello " + @SessionWrapper.UserAccount.UserEmail + "!", "Dashboard", "Admin", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    </li>
+                    <li><a href="@Url.Action("Logout", "User")">Sign Out</a></li>
+
+                </ul>
+            </span>
+
+        }
+
+
+
+        else
+        {
+            @*<ul class="nav navbar-nav navbar-right">*@
+            <li>@Html.ActionLink("Register", "Create", "Registration")</li>
+            <li>@Html.ActionLink("Log in", "Login", "User")</li>
+            @*</ul>*@
+        }
+
+
+
+    }
+    else
+    {
+        @*<ul class="nav navbar-nav navbar-right">*@
+        <li>@Html.ActionLink("Register", "Create", "Registration")</li>
+        <li>@Html.ActionLink("Log in", "Login", "User")</li>
+        @*</ul>*@
+    }
+}
+else
+{
+    <a href="@Url.Action("Index","Home")"><span class="fa fa-home"></span>&nbsp; Home</a>
+    <a href="@Url.Action("Create","Registration")"><span class="fa fa-pencil-square-o"></span>&nbsp;Register</a>
+    <a href="@Url.Action("Login", "User")"><span class="fa fa-sign-in"></span>&nbsp;&nbsp;Login</a>
+   
+}
+@*<ul class="nav navbar-nav navbar-right">*@
+    
+
+

@@ -1,0 +1,80 @@
+﻿@model PROJECT.Core.Models.ViewModels.StudentSearchReportViewModel
+@using PROJECT.Core.Models.ViewModels
+@{
+    ViewBag.Title = "DateReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DateReport</h2>
+
+@using (Html.BeginForm("ReportWithOutPaging", "StudentReport", FormMethod.Get))
+{
+  
+
+    <div class="form-horizontal">
+        <h4>StudentSearchReportViewModel</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.strStartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.strStartDate, new { @class = "form-control datepicker" })
+                @Html.ValidationMessageFor(model => model.strStartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.strEndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.strEndDate, new { @class = "form-control datepicker" })
+                @Html.ValidationMessageFor(model => model.strEndDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (StudentSearchReportViewModel item in Model.StudentViewModelList)
+    {
+        <tr>
+            <td>
+                @item.Name
+            </td>
+            <td>
+                @item.Age
+            </td>
+            <td>
+
+
+
+
+                @Enum.GetName(typeof(GenderEnum), item.Gender)
+            </td>
+        </tr>
+
+    }
+</table>

@@ -1,0 +1,129 @@
+﻿
+@{
+    ViewBag.Title = "DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GraphReport</h2>
+<div class="panel-body ">
+
+    <div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+
+</div>
+
+@section scripts
+{
+    <script>
+
+        $(function () {
+
+            //var objdata = JSON.stringify({ Id:'1'});
+            var ajaxurl = "/Student/GraphReport"
+
+
+       
+
+       
+            var XValues = [];
+            var YValues = [];
+           
+
+
+
+
+            
+
+
+            $.ajax(
+                {
+                    type: "Post",
+                    url: ajaxurl,
+
+                    contentType: "application/json",
+                    //data: objdata,
+
+                    dataType: "json",
+                    success: function (response) {
+                     
+                        var Sitenam = "";
+                        var totelHour = 0;
+                        
+                        $.each(response, function (index, item) {
+
+
+                          
+
+                             
+                            XValues.push(item.Age);
+                            YValues.push(item.Name);
+
+                        });
+                        
+                        
+                        $('#container').highcharts({
+                            title: {
+                                text: 'Students Age Report',
+                                x: -20 //center
+                            },
+                            subtitle: {
+                                text: 'Source: TheKensho.in',
+                                x: -20
+                            },
+                            xAxis: {
+                                categories:YValues
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'Age'
+                                },
+                                plotLines: [{
+                                    value: 0,
+                                    width: 1,
+                                    color: '#808080'
+                                }]
+                            },
+                            tooltip: {
+                                valueSuffix: 'Years'
+                            },
+                            legend: {
+                                layout: 'vertical',
+                                align: 'right',
+                                verticalAlign: 'middle',
+                                borderWidth: 0
+                            },
+                            series: [{
+                                name: 'Age',
+                                data: XValues
+                            }]
+                        });
+                       
+
+
+
+
+
+
+                    },
+                    cache: false,
+                    error: function (e) {
+
+
+                    },
+
+                    complete: function () {
+
+                    }
+
+                });
+
+
+
+
+
+        });
+
+
+
+
+    </script>
+}
